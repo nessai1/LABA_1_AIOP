@@ -4,42 +4,66 @@
 
 // abstract class 
 class Player {
+
+protected:
+	int hp;
+	BlockType playerBlock;
+	std::string nick;
+
 public:
 
-	virtual bool attackUp(Player* defenser) = 0;
-	virtual bool blockAttack(int attackID) = 0;
+	Player(int hp = 300)
+		: hp(hp), nick("Player") {}
 
-	virtual bool setDamage(int attackDamage) = 0;
-	virtual std::string getNick() = 0;
-	virtual void setNick(std::string newNick) = 0;
-	virtual bool isAlive() = 0;
+	void setNick(std::string inputNick)
+	{
+		this->nick = inputNick;
+	}
 
 	void setBlock(BlockType inputBlock)
 	{
 		this->playerBlock = inputBlock;
 	}
 
-protected:
-
-	BlockType playerBlock;
-
-	BlockType getBlockType(int id)
+	BlockType getBlock()
 	{
-		if (id == 1)
-		{
-			return BlockType::UP;
-		}
-		else if (id == 2)
-		{
-			return BlockType::MIDDLE;
-		}
-		else if (id == 3)
-		{
-			return BlockType::DOWN;
-		}
-		else
-		{
-			throw new std::logic_error("Указан нев");
-		}
+		return this->playerBlock;
 	}
+
+	void setHP(int inputHP)
+	{
+		this->hp = inputHP;
+	}
+
+	bool isAlive()
+	{
+		return this->getHP() > 0;
+	}
+
+	int getHP()
+	{
+		return this->hp;
+	}
+
+	bool setDamage(int attackDamage)
+	{
+		this->setHP(this->getHP() - attackDamage);
+	}
+
+	void setNick(std::string inputNick)
+	{
+		this->nick = inputNick;
+	}
+
+	std::string getNick()
+	{
+		return this->nick;
+	}
+
+	virtual void attackUltimate(Player* defenser) = 0;
+	virtual bool attackUp(Player* defenser) = 0;
+	
+
+
+
 };
