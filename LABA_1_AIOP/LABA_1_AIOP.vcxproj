@@ -142,8 +142,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleManager.hpp" />
+    <ClInclude Include="BlockType.hpp" />
     <ClInclude Include="Doomguy.hpp" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="Player.hpp" />
     <ClInclude Include="Session.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,6 @@
 #include "Player.h";
 
-class Doomguy : public Player
+class Doomguy : Player
 {
 public:
 
@@ -43,6 +43,9 @@ public:
 
 
 protected:
+
+	enum {};
+
 	bool blockUp;
 	int mainDamage;
 	int hp;

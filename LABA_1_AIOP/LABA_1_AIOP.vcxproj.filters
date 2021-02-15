@@ -20,13 +20,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Файлы ресурсов</Filter>
-    </ClInclude>
     <ClInclude Include="Doomguy.hpp">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="Session.hpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.hpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockType.hpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleManager.hpp">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
   </ItemGroup>
