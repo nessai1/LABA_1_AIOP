@@ -7,18 +7,15 @@ class Player {
 
 protected:
 	int hp;
+	int mainDamage;
 	BlockType playerBlock;
 	std::string nick;
 
 public:
 
 	Player(int hp = 300)
-		: hp(hp), nick("Player") {}
+		: hp(hp), nick("Player"), mainDamage(40), playerBlock(BlockType::NONE) {}
 
-	void setNick(std::string inputNick)
-	{
-		this->nick = inputNick;
-	}
 
 	void setBlock(BlockType inputBlock)
 	{
@@ -45,7 +42,7 @@ public:
 		return this->hp;
 	}
 
-	bool setDamage(int attackDamage)
+	void setPureDamage(int attackDamage)
 	{
 		this->setHP(this->getHP() - attackDamage);
 	}
@@ -60,10 +57,20 @@ public:
 		return this->nick;
 	}
 
+	/* virtal block */
+
+	// возвращает полученный дамаг
+	virtual int setDamage(int attackDamage) = 0;
+
+	// возвращает конечный дамаг пользователя
+	virtual int getDamage() = 0;
+
+	virtual void dailyEffect() = 0;
+
 	virtual void attackUltimate(Player* defenser) = 0;
 	virtual bool attackUp(Player* defenser) = 0;
 	
-
+	/* /virtual block */
 
 
 };

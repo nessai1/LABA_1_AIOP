@@ -1,53 +1,66 @@
-#include "Player.h";
+#include "Player.hpp"
 
-class Doomguy : Player
+class Doomguy : public Player
 {
+
+protected:
+	unsigned int shieldPower;
+
 public:
 
-	Doomguy() : hp(300), mainDamage(30), nick("THE DOOM SLAYER"), blockUp(false)
-	{}
+	Doomguy()
+	{
+		this->setNick("Doom Slayer");
+		this->shieldPower = 0;
+	}
+
+	void dailyEffect() override
+	{
+		if (this->shieldPower > 0)
+			this->shieldPower /= 2;
+	}
 
 	bool attackUp(Player* defenser) override {
 		
-		if (defenser->getBlockUp())
+		bool attackResult = true;
+		if (defenser->getBlock() != BlockType::UP)
 		{
-			std::cout << this->getNick() << " проводит безуспешную верхнюю атаку по " << defenser->getNick() << "\n";
-			return false;
+			defenser->setDamage(this->mainDamage);
+			std::cout << this->getNick() << " сделал из " << defenser->getNick() << " решето с помощью своей двуствлки\n";
+			
 		}
 		else
 		{
-			defenser->setDamage(this->mainDamage);
-			std::cout << this->getNick() << " сделал из " << defenser->getNick() << " решето с помощью своей двуствлки\n";	
+			std::cout << this->getNick() << " проводит безуспешную верхнюю атаку по " << defenser->getNick() << "\n";
+			attackResult = false;
 		}
+
+		defenser->setBlock(BlockType::NONE);
+		return attackResult;
+	}
+
+	void attackUltimate(Player* defenser) override {
+		std::cout << this->getNick() << " достал из кармана свой BFG-9000 и сделал выстрел который пробивает любой уровень защиты (+ удвоенный урон). Молись своему любимому божеству о быстрой смерти.\n";
+		defenser->setPureDamage(this->getDamage()*2);
+	}
+
+	int setDamage(int attackDamage) override
+	{
+		int pureDamage = (attackDamage > this->shieldPower ? attackDamage - this->shieldPower : 0);
+
+		this->setPureDamage(pureDamage);
 		
+		this->dailyEffect();
 
-		return true;
+		return pureDamage;
 	}
 
-	bool isAlive() override {
-		return this->hp > 0;
-	}
-
-	std::string getNick() override {
-		return this->nick;
-	}
-
-	void setNick(std::string newNick) override {
-		this->nick = newNick;
-	}
-
-	bool setDamage(int attackDamage) override {
-		this->hp -= attackDamage;
-		return true;
+	int getDamage() override
+	{
+		return this->mainDamage;
 	}
 
 
-protected:
 
-	enum {};
 
-	bool blockUp;
-	int mainDamage;
-	int hp;
-	std::string nick;
 };

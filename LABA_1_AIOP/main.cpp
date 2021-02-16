@@ -2,6 +2,7 @@
 #include "Session.hpp"
 int main()
 {
-	Sessio
+	Session* game = new Session();
+	game->startSession();
 	return 0;
 }
