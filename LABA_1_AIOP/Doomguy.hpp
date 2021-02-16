@@ -31,7 +31,7 @@ public:
 		bool attackResult = true;
 		if (defenser->getBlock() != BlockType::UP)
 		{
-			int resultDamage = defenser->setDamage(this->mainDamage);
+			int resultDamage = defenser->setDamage(this->getDamage());
 			std::cout << this->getNick() << " сделал из " << defenser->getNick() << " решето с помощью своей двуствлки\n";
 			std::cout << "\n ол-во нанесенного урона: " << resultDamage << "HP\n";
 			
@@ -50,7 +50,7 @@ public:
 		bool attackResult = true;
 		if (defenser->getBlock() != BlockType::MIDDLE)
 		{
-			int resultDamage = defenser->setDamage(static_cast<int>(this->mainDamage*1.3));
+			int resultDamage = defenser->setDamage(static_cast<int>(this->getDamage()*1.3));
 			std::cout << this->getNick() << " прошелс€ бензопилой по " << defenser->getNick() << ", получив временный бонус в виде двойного урона на прот€жении 2х следующих раундов\n";
 			this->doubleDamage = 2;
 			std::cout << "\n ол-во нанесенного урона: " << resultDamage << "HP\n";
@@ -68,7 +68,7 @@ public:
 		bool attackResult = true;
 		if (defenser->getBlock() != BlockType::DOWN)
 		{
-			int resultDamage = defenser->setDamage(static_cast<int>(this->mainDamage * 1.5));
+			int resultDamage = defenser->setDamage(static_cast<int>(this->getDamage() * 1.5));
 			std::cout << this->getNick() << " использовал щит, получив временный бонус к защите. Ѕрон€ будет ослабевать в 2 раза каждый раунд, пока окончательно не закончитс€\n";
 			this->shieldPower = 32;
 			std::cout << " ол-во нанесенного урона: " << resultDamage << "HP\n";
@@ -101,6 +101,10 @@ public:
 
 	int getDamage() override
 	{
+		if (this->doubleDamage > 0)
+		{
+			return this->mainDamage * 2;
+		}
 		return this->mainDamage;
 	}
 

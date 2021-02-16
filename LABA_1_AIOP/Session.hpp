@@ -31,8 +31,6 @@ public:
 		Player* winner = BattleManager::makeBattle(firstPlayer, secondPlayer);
 		system("cls");
 		std::cout << winner->getNick() << " выжил в этой смертельной битве и стал победителем!!\n";
-		std::cout << firstPlayer->getNick() << " HP: " << firstPlayer->getHP() << '\n';
-		std::cout << secondPlayer->getNick() << " HP: " << firstPlayer->getHP() << '\n';
 	}
 
 protected:
@@ -52,7 +50,7 @@ protected:
 			std::cout << "Игрок " << playerNumber << ", выберите своего персонажа\n";
 			std::cout << "1. Палач рока\n";
 			std::cout << "2. Коготь смерти\n";
-			std::cout << "3. Касадор\n";
+			std::cout << "3. Рейнджер НКР\n";
 			std::cout << "ВВОД: ";
 			std::cin >> personID;
 			switch (personID)
@@ -62,6 +60,9 @@ protected:
 				break;
 			case 2:
 				personPlayer = new DeathClaw;
+				break;
+			case 3:
+				personPlayer = new Ranger;
 				break;
 			default:
 				wrongInput = true;

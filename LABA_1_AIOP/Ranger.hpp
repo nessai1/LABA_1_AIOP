@@ -1,17 +1,21 @@
-#pragma once
-
-class DeathClaw : public Player
+class Ranger : public Player
 {
+
 protected:
 	unsigned int shieldPower;
 	int shieldTime;
 	int doubleDamage;
+
+	int bonusDamage;
+	int bonusTime;
 public:
 
-	DeathClaw()
+	Ranger()
 	{
+		bonusTime = 0;
+		bonusDamage = 0;
 		this->shieldTime = 0;
-		this->setNick(" оготь смерти");
+		this->setNick("–ейнджер ветеран NCR");
 		this->shieldPower = 0;
 	}
 
@@ -34,8 +38,8 @@ public:
 		bool attackResult = true;
 		if (defenser->getBlock() != BlockType::UP)
 		{
-			int resultDamage = defenser->setDamage(this->getDamage());
-			std::cout << this->getNick() << " нанес удар лапой по " << defenser->getNick() << " \n";
+			int resultDamage = defenser->setDamage(static_cast<int>(this->getDamage() * 0.5));
+			std::cout << this->getNick() << " достал свой револьвер 'больша€ желез€ка' и выстрелил в " << defenser->getNick() << " \n";
 			std::cout << "\n ол-во нанесенного урона: " << resultDamage << "HP\n";
 		}
 		else
@@ -53,9 +57,10 @@ public:
 		if (defenser->getBlock() != BlockType::MIDDLE)
 		{
 
-			int resultDamage = defenser->setDamage(static_cast<int>(this->getDamage() * 1.2));
-			std::cout << this->getNick() << " нанес свирепый удар получив бонус к двойному урону на один раунд " << defenser->getNick() << ", получив временный бонус в виде двойного урона на прот€жении 2х следующих раундов\n";
-			this->doubleDamage = 1;
+			int resultDamage = defenser->setDamage(static_cast<int>(this->getDamage() * 1.5));
+			std::cout << this->getNick() << " ¬ыстрелил из своей верной, крупнокалиберной снайперской винтовки, использу€ зажигательные патроны, в " << defenser->getNick() << ", получив временный бонус в виде дополнительного урона в виде 30 очков на 3 хода\n";
+			this->doubleDamage = 3;
+			this->bonusDamage = 30;
 			std::cout << "\n ол-во нанесенного урона: " << resultDamage << "HP\n";
 		}
 		else
@@ -72,7 +77,7 @@ public:
 		if (defenser->getBlock() != BlockType::DOWN)
 		{
 			int resultDamage = defenser->setDamage(static_cast<int>(this->getDamage() * 1.7));
-			std::cout << this->getNick() << " пронзил " << defenser->getNick() << ". ≈го кровь станет временным щитом от атак. (20 поинтов брони на 2 хода).\n";
+			std::cout << this->getNick() << " активировал тесла-броню на 2 хода. »з-за защитного пол€ " << defenser->getNick() << " наносит игроку в 2 раза меньше урона.\ns";
 			this->shieldPower = 20;
 			this->shieldTime = 2;
 			std::cout << " ол-во нанесенного урона: " << resultDamage << "HP\n";
@@ -87,9 +92,9 @@ public:
 
 
 	void attackUltimate(Player* defenser) override {
-		std::cout << this->getNick() << " призвал альфа-самца когт€ смерти. " << defenser->getNick() << " получает тройной урон.\n";
-		int resDamage = defenser->setDamage(this->getDamage() * 3);
-		std::cout << " ол-во нанесенного урона: " << resDamage << "HP\n";
+		std::cout << this->getNick() << " благодар€ своему таланту скрытности рейнджер нанес игроку " << defenser->getNick() << " удар в спину, нанес€ двойной урон сквозь защиту.";
+		defenser->setPureDamage(this->getDamage() * 2);
+		std::cout << " ол-во нанесенного урона: " << this->getDamage() * 2 << "HP\n";
 	}
 
 	int setDamage(int attackDamage) override
@@ -97,9 +102,9 @@ public:
 		int pureDamage = attackDamage;
 		if (this->shieldTime > 0)
 		{
-			pureDamage = (attackDamage > this->shieldPower ? attackDamage - this->shieldPower : 0);
+			pureDamage = pureDamage / 2;
 		}
-		
+
 		this->setPureDamage(pureDamage);
 
 		this->dailyEffect();
@@ -109,9 +114,11 @@ public:
 
 	int getDamage() override
 	{
-		if (this->doubleDamage > 0)
+
+		if (bonusTime > 0)
 		{
-			return this->mainDamage * 2;
+			bonusTime--;
+			return this->mainDamage + bonusDamage;
 		}
 		return this->mainDamage;
 	}

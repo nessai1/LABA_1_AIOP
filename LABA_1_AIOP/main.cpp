@@ -4,9 +4,12 @@
 #include "BlockType.hpp"
 #include "Player.hpp"
 #include "Death—law.hpp"
+#include "Ranger.hpp"
 #include "Doomguy.hpp"
 #include "BattleManager.hpp"
 #include "Session.hpp"
+
+
 int main()
 {
 	setlocale(LC_ALL, "rus");
