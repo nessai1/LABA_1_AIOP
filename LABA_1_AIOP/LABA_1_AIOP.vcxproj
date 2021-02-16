@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="BattleManager.hpp" />
     <ClInclude Include="BlockType.hpp" />
+    <ClInclude Include="DeathСlaw.hpp" />
     <ClInclude Include="Doomguy.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Session.hpp" />

@@ -1,4 +1,4 @@
-#include "Player.hpp"
+
 
 class BattleManager
 {
@@ -6,8 +6,16 @@ public:
 
 	static Player* makeBattle(Player* firstPlayer, Player* secondPlayer)
 	{
-		while (firstPlayer->isAlive() && secondPlayer->isAlive())
+		for (int i = 1; firstPlayer->isAlive() && secondPlayer->isAlive(); i++)
 		{
+			//system("cls");
+			std::cout << "\n==================\n";
+			std::cout << "Ход #" << i << '\n';
+			std::cout << "Ход игрока " << firstPlayer->getNick() << '\n';
+			std::cout << firstPlayer->getNick() << " HP: " << firstPlayer->getHP() << '\n';
+			std::cout << secondPlayer->getNick() << " HP: " << secondPlayer->getHP() << '\n';
+			std::cout << "==================\n";
+
 			makeTurn(firstPlayer, secondPlayer);
 			std::swap(firstPlayer, secondPlayer);
 		}
@@ -39,7 +47,7 @@ protected:
 				wrongInput = false;
 				std::cout << "Вид атаки должен быть числом в промежутке от 1 до 3х. Повторите попытку\n";
 			}
-			std::cout << attacker->getNick() << ", выберите тип блока:\n";
+			std::cout << attacker->getNick() << ", выберите тип атаки:\n";
 			std::cout << "1. Верхняя атака\n";
 			std::cout << "2. Средняя атака\n";
 			std::cout << "3. Нижняя атака\n";
@@ -50,6 +58,12 @@ protected:
 			{
 			case 1:
 				attackResult = attacker->attackUp(defenser);
+				break;
+			case 2:
+				attackResult = attacker->attackMiddle(defenser);
+				break;
+			case 3:
+				attackResult = attacker->attackDown(defenser);
 				break;
 			default:
 				wrongInput = true;

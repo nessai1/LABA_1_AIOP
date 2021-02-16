@@ -35,5 +35,8 @@
     <ClInclude Include="BattleManager.hpp">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
+    <ClInclude Include="DeathСlaw.hpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

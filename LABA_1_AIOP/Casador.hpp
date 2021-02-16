@@ -1,6 +1,6 @@
 
 
-class Doomguy : public Player
+class Casador : public Player
 {
 
 protected:
@@ -8,7 +8,7 @@ protected:
 	int doubleDamage;
 public:
 
-	Doomguy()
+	Casador()
 	{
 		this->doubleDamage = 0;
 		this->setNick("Doom Slayer");
@@ -27,14 +27,14 @@ public:
 	}
 
 	bool attackUp(Player* defenser) override {
-		
+
 		bool attackResult = true;
 		if (defenser->getBlock() != BlockType::UP)
 		{
 			int resultDamage = defenser->setDamage(this->mainDamage);
 			std::cout << this->getNick() << " сделал из " << defenser->getNick() << " решето с помощью своей двуствлки\n";
 			std::cout << "\nКол-во нанесенного урона: " << resultDamage << "HP\n";
-			
+
 		}
 		else
 		{
@@ -50,7 +50,7 @@ public:
 		bool attackResult = true;
 		if (defenser->getBlock() != BlockType::MIDDLE)
 		{
-			int resultDamage = defenser->setDamage(static_cast<int>(this->mainDamage*1.3));
+			int resultDamage = defenser->setDamage(static_cast<int>(this->mainDamage * 1.3));
 			std::cout << this->getNick() << " прошелся бензопилой по " << defenser->getNick() << ", получив временный бонус в виде двойного урона на протяжении 2х следующих раундов\n";
 			this->doubleDamage = 2;
 			std::cout << "\nКол-во нанесенного урона: " << resultDamage << "HP\n";
@@ -84,7 +84,7 @@ public:
 
 	void attackUltimate(Player* defenser) override {
 		std::cout << this->getNick() << " достал из кармана свой BFG-9000 и сделал выстрел который пробивает любой уровень защиты (+ удвоенный урон). " << defenser->getNick() << ", молись своему любимому божеству о быстрой смерти.\n";
-		defenser->setPureDamage(this->getDamage()*2);
+		defenser->setPureDamage(this->getDamage() * 2);
 		std::cout << "Кол-во нанесенного урона: " << this->getDamage() * 2 << "HP\n";
 	}
 
@@ -93,7 +93,7 @@ public:
 		int pureDamage = (attackDamage > this->shieldPower ? attackDamage - this->shieldPower : 0);
 
 		this->setPureDamage(pureDamage);
-		
+
 		this->dailyEffect();
 
 		return pureDamage;

@@ -1,6 +1,4 @@
-#include <string>
-#include <iostream>
-#include "BlockType.hpp"
+
 
 // abstract class 
 class Player {
@@ -69,7 +67,8 @@ public:
 
 	virtual void attackUltimate(Player* defenser) = 0;
 	virtual bool attackUp(Player* defenser) = 0;
-	
+	virtual bool attackDown(Player* defenser) = 0;
+	virtual bool attackMiddle(Player* defenser) = 0;
 	/* /virtual block */
 
 
