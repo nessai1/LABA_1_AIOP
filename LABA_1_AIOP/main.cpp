@@ -3,11 +3,26 @@
 #include <ctime>
 #include "BlockType.hpp"
 #include "Player.hpp"
+
+
+/// skills 
+#include "SkillContract.hpp"
+#include "SideEffect.hpp"
+
+#include "SkillWarrior.hpp"
+
+#include "SkillMage.hpp"
+#include "SkillMageJinx.hpp"
+
+#include "Fighter.hpp"
+#include "Warrior.hpp"
 #include "Death—law.hpp"
 #include "Ranger.hpp"
 #include "Doomguy.hpp"
 #include "BattleManager.hpp"
+#include "FighterBuilder.hpp"
 #include "Session.hpp"
+
 
 
 int main()

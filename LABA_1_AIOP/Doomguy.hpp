@@ -60,6 +60,8 @@ public:
 			std::cout << this->getNick() << " проводит безуспешную верхнюю атаку по " << defenser->getNick() << "\n";
 			attackResult = false;
 		}
+
+		defenser->setBlock(BlockType::NONE);
 		return attackResult;
 	}
 
@@ -78,6 +80,8 @@ public:
 			std::cout << this->getNick() << " проводит безуспешную верхнюю атаку по " << defenser->getNick() << "\n";
 			attackResult = false;
 		}
+		
+		defenser->setBlock(BlockType::NONE);
 		return attackResult;
 	}
 
