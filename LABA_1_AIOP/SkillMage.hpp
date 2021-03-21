@@ -5,6 +5,8 @@ protected:
 
 public:
 
+
+
 	bool checkManaPossible(int inputMana)
 	{
 

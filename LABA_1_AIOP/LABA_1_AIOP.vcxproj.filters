@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\sideEffects">
+      <UniqueIdentifier>{789c8054-5f40-4d25-86b9-aef71e89cc63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\fighters">
+      <UniqueIdentifier>{66f6bc03-2799-49ba-bf6f-3568b776a2cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\skills">
+      <UniqueIdentifier>{603de89a-d709-40c9-9061-0e22fc717dae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,16 +50,7 @@
     <ClInclude Include="Ranger.hpp">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
-    <ClInclude Include="Fighter.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="FighterBuilder.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillContract.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Warrior.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="AbilityContract.hpp">
@@ -58,6 +58,30 @@
     </ClInclude>
     <ClInclude Include="Casador.hpp">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SideEffect.hpp">
+      <Filter>Файлы заголовков\sideEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="Warrior.hpp">
+      <Filter>Файлы заголовков\fighters</Filter>
+    </ClInclude>
+    <ClInclude Include="Fighter.hpp">
+      <Filter>Файлы заголовков\fighters</Filter>
+    </ClInclude>
+    <ClInclude Include="SideEffectPoisoning.hpp">
+      <Filter>Файлы заголовков\sideEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillContract.hpp">
+      <Filter>Файлы заголовков\skills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMage.hpp">
+      <Filter>Файлы заголовков\skills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMageJinx.hpp">
+      <Filter>Файлы заголовков\skills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillWarrior.hpp">
+      <Filter>Файлы заголовков\skills</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

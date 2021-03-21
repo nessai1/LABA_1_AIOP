@@ -10,6 +10,8 @@ private:
 
 public:
 
+
+
     Fighter(int inputHP) : hp(inputHP)
     {}
    
@@ -20,17 +22,14 @@ public:
      * @param inputDamage
      * @return
      */
-    bool setPureDamage(int inputDamage)
+    void setPureDamage(int inputDamage)
     {
-        if (this->hp >= inputDamage)
-        {
-            this->hp -= inputDamage;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+       this->hp -= inputDamage;
+    }
+
+    bool isAlive()
+    {
+        return this->hp > 0;
     }
 
     /**

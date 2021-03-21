@@ -14,6 +14,12 @@
 #include "SkillMage.hpp"
 #include "SkillMageJinx.hpp"
 
+
+// side effects
+#include "SideEffect.hpp"
+
+#include "SideEffectPoisoning.hpp"
+
 #include "Fighter.hpp"
 #include "Warrior.hpp"
 #include "Death—law.hpp"

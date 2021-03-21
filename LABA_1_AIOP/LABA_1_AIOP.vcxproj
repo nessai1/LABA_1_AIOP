@@ -154,6 +154,7 @@
     <ClInclude Include="Ranger.hpp" />
     <ClInclude Include="Session.hpp" />
     <ClInclude Include="SideEffect.hpp" />
+    <ClInclude Include="SideEffectPoisoning.hpp" />
     <ClInclude Include="SkillContract.hpp" />
     <ClInclude Include="SkillMage.hpp" />
     <ClInclude Include="SkillMageJinx.hpp" />

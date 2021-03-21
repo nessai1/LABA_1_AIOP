@@ -4,12 +4,16 @@ class SideEffect
 protected:
 	int turns;
 
+
+	virtual void manipulateFighter(Fighter* manipulatedFighter) = 0;
 public:
+
 
 	SideEffect(int inputTurns)
 	{
 		this->turns = inputTurns;
 	}
+
 
 	int getTurn()
 	{
@@ -35,6 +39,17 @@ public:
 	{
 		return setTurn(this->getTurn() - 1);
 	}
-
-	virtual bool makeSideEffect(Fighter* inputFighter) = 0;
+	
+	bool makeSideEffect(Fighter* inputFighter)
+	{
+		if (this->makeTurn())
+		{
+			this->manipulateFighter(inputFighter);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 };
