@@ -2,20 +2,47 @@
 
 class Fighter
 {
-private:
+protected:
     std::string nickName;
-    std::string fighterName;
     int hp;
     int blockID;
 
+    // armor
+    int magicArmor;
+    int physicalArmor;
+    float dodge; // процент уклонения от физ. урона (от 0.0 до 1.0)
+
+    bool magicBlock;
+
+    std::vector<SkillContract*> skills;
+
 public:
 
-
-
-    Fighter(int inputHP) : hp(inputHP)
+    Fighter(int inputHP) : hp(inputHP), magicArmor(0), physicalArmor(0), magicBlock(false)
     {}
    
-    virtual bool setDamage(int inputDamage) = 0;
+    
+
+    virtual int setPhysicalDamage(int inputDamage)
+    {
+        int nonDodgeDamage = inputDamage - static_cast<int>(inputDamage * this->dodge);
+        this->setPureDamage(nonDodgeDamage);
+        return nonDodgeDamage;
+    }
+
+    virtual int setMagicDamage(int inputDamage)
+    {
+        if (!this->magicBlock)
+        {
+            this->setPureDamage(inputDamage);
+            return inputDamage;
+        }
+        else
+        {
+            return 0;
+        }
+
+    }
 
     /**
      * give player pure damage without effects
@@ -32,6 +59,18 @@ public:
         return this->hp > 0;
     }
 
+    void setDodge(float inputDodge)
+    {
+        if (inputDodge <= 1 && 0 <= inputDodge)
+        {
+            this->dodge = inputDodge;
+        }
+        else
+        {
+            throw std::invalid_argument("input argument 'dodge' must be float value in [0;1] position");
+        }
+    }
+
     /**
      * set player HP
      * @param inputHP
@@ -39,6 +78,11 @@ public:
     void setHP(int inputHP)
     {
         this->hp = inputHP;
+    }
+
+    int getHP()
+    {
+        return this->hp;
     }
 
     /**
@@ -50,15 +94,15 @@ public:
         return this->nickName;
     }
 
-    /**
-     * get fighter name
-     * @return
-     */
-    std::string getPersonName()
+    
+    void setBlockID(int inputBlockID)
     {
-        return this->fighterName;
+        this->blockID = inputBlockID;
     }
 
-
+    int getBlockID()
+    {
+        return this->blockID;
+    }
 };
 

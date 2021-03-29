@@ -1,16 +1,17 @@
-class SkillMage : public SkillContract
+class SkillMage
 {
 protected:
-	int mana;
+	int cost;
 
 public:
 
-
+	SkillMage(int inputCost = 0) : cost(inputCost)
+	{}
 
 	bool checkManaPossible(int inputMana)
 	{
 
-		if (this->mana >= inputMana)
+		if (this->cost <= inputMana)
 		{
 			return true;
 		}
@@ -21,5 +22,8 @@ public:
 
 	}
 
-	virtual int getCost() = 0;
+	virtual int getCost() 
+	{
+		return this->cost;
+	}
 };
