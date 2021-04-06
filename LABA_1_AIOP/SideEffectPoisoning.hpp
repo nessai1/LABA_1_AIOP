@@ -11,6 +11,8 @@ protected:
 		manipulatedFighter->setPureDamage(this->poisoningDamage);
 	}
 
+
+
 public:
 
 	SideEffectPoisoning(int inputDamage = 25, int inputTurns = 1) : SideEffect(inputTurns), poisoningDamage(inputDamage)

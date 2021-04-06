@@ -42,6 +42,7 @@ public:
 	
 	bool makeSideEffect(Fighter* inputFighter)
 	{
+		
 		if (this->makeTurn())
 		{
 			this->manipulateFighter(inputFighter);
@@ -51,5 +52,6 @@ public:
 		{
 			return false;
 		}
+
 	}
 };

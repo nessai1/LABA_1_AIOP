@@ -7,6 +7,8 @@ protected:
     int hp;
     int blockID;
 
+    int mana; // mana
+
     // armor
     int magicArmor;
     int physicalArmor;
@@ -15,13 +17,88 @@ protected:
     bool magicBlock;
 
     std::vector<SkillContract*> skills;
+    std::vector<SideEffect*> sideEffects;
 
 public:
 
+    virtual void useUltimate(Fighter* defencer) = 0;
+
+    virtual int getMana()
+    {
+        return 0;
+    }
+
     Fighter(int inputHP) : hp(inputHP), magicArmor(0), physicalArmor(0), magicBlock(false)
     {}
+
+    void updatePlayer()
+    {
+        for (int i = 0; i < sideEffects.size(); i++)
+        {
+            if (sideEffects[i]->makeSideEffect(this))
+        }
+    }
    
+    void showSkills()
+    {
+        for (int i = 0; i < skills.size(); i++)
+        {
+            std::cout << i + 1 << ". " << skills[i]->getName();
+            
+            if (skills[i]->getCost() == 0)
+            {
+                std::cout << '\n';
+            }
+            else
+            {
+                std::cout << " [Mana: " << skills[i]->getCost() << "]\n";
+            }
+
+        }
+    }
+
     
+
+    bool attackPlayer(Fighter* defencer)
+    {
+        int inputID = 0;
+        
+        while (inputID > skills.size() && inputID <= 0)
+        {
+            std::cout << this->getNick() << ", выберите свою атаку:\n";
+            this->showSkills();
+
+            std::cout << "ВВОД: ";
+            std::cin >> inputID;
+
+            if (inputID > skills.size() && inputID <= 0)
+            {
+                std::cout << "[Ошибка] Введен неверный номер способности." << '\n';
+                continue;
+            }
+            else
+            {
+                if (skills[inputID - 1]->getCost() > this->getMana())
+                {
+                    std::cout << "[Ошибка] У вас недостаточно маны!" << '\n';
+                    inputID = 0;
+                }
+            }
+        }
+
+        std::cout << this->getNick() << " использует способность '" << this->skills[inputID - 1]->getName() << "'\n";
+        if (defencer->getBlockID() != inputID)
+        {
+            this->skills[inputID - 1]->manipulatePlayer(defencer);
+            return true;
+        }
+        else
+        {
+            std::cout << defencer->getNick() << "Блокирует атаку противника." << '\n';
+            return false;
+        }
+    }
+
 
     virtual int setPhysicalDamage(int inputDamage)
     {
