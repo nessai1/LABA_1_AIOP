@@ -9,13 +9,16 @@ protected:
 
     int mana; // mana
 
+
+    int standartMagicArmor;
+    int standartPhysicalArmor;
+    
     // armor
     int magicArmor;
     int physicalArmor;
     float dodge; // процент уклонения от физ. урона (от 0.0 до 1.0)
 
     bool magicBlock;
-
     std::vector<SkillContract*> skills;
     std::vector<SideEffect*> sideEffects;
 
@@ -28,17 +31,34 @@ public:
         return 0;
     }
 
-    Fighter(int inputHP) : hp(inputHP), magicArmor(0), physicalArmor(0), magicBlock(false)
+    Fighter(int inputHP, int standartMagicArmor = 0, int standartPhysicalArmor = 0, std::string nickName = "FIGHTER") : nickName(nickName), standartMagicArmor(standartMagicArmor), standartPhysicalArmor(standartPhysicalArmor), hp(inputHP), magicArmor(0), physicalArmor(0), magicBlock(false)
     {}
+
+    void clearStats()
+    {
+        this->magicArmor = this->standartMagicArmor;
+        this->physicalArmor = this->standartPhysicalArmor;
+    }
 
     void updatePlayer()
     {
+        this->clearStats();
         for (int i = 0; i < sideEffects.size(); i++)
         {
-            if (sideEffects[i]->makeSideEffect(this))
+            sideEffects[i]->makeSideEffect(this);
         }
     }
    
+    void addSideEffect(SideEffect* inputSideEffect)
+    {
+        this->sideEffects.push_back(inputSideEffect);
+    }
+
+    void addSkill(SkillContract* inputSC)
+    {
+        this->skills.push_back(inputSC);
+    }
+
     void showSkills()
     {
         for (int i = 0; i < skills.size(); i++)
@@ -131,6 +151,9 @@ public:
        this->hp -= inputDamage;
     }
 
+
+
+   
     bool isAlive()
     {
         return this->hp > 0;
@@ -162,6 +185,12 @@ public:
         return this->hp;
     }
 
+    void addHP(int inputHP)
+    {
+        this->hp += inputHP;
+    }
+
+
     /**
      * get player nickname
      * @return
@@ -169,6 +198,11 @@ public:
     std::string getNick()
     {
         return this->nickName;
+    }
+
+    void setNick(std::string inputNick)
+    {
+        this->nickName = inputNick;
     }
 
     

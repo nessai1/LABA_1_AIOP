@@ -1,24 +1,20 @@
-
-class SkillMageJinx : public SkillMage, public SkillContract
+class SkillMageJinx : public SkillMage
 {
 protected:
-	int damage;
+	int skillDamage;
+
 public:
 
-	SkillMageJinx(int inputDamage = 40, int inputCost = 20) : damage(inputDamage), SkillMage(inputCost)
-	{}
+	SkillMageJinx(int skillDamage = 100, int skillCost = 80) : SkillMage(skillCost), skillDamage(skillDamage) {}
 
-	int getDamage()
+	std::string getName()
 	{
-		return this->damage;
+		return "Наслать проклятье на противника (MAGIC: " + this->skillDamage + ')';
 	}
 
 	void manipulatePlayer(Fighter* manipulatedPlayer)
 	{
-		
-		std::cout << manipulatedPlayer->getNick() << " был проклят зельем разрушения и получил 40"
+		int finalDamage = manipulatedPlayer->setMagicDamage(this->skillDamage);
+		std::cout << manipulatedPlayer->getNick() << " был проклят и получил " << finalDamage << " очков урона\n";
 	}
-
-	
-
 };

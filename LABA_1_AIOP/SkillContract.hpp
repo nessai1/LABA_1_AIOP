@@ -1,8 +1,11 @@
+//class Fighter;
 class SkillContract
 {
 protected: 
     int cost;
 public:
+
+    SkillContract(int cost) : cost(cost) {}
 
     int getCost()
     {
@@ -10,6 +13,5 @@ public:
     }
 
     virtual std::string getName() = 0;
-    virtual int getDamage() = 0;
     virtual void manipulatePlayer(Fighter* manipulatedPlayer) = 0;
 };

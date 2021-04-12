@@ -142,22 +142,24 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbilityContract.hpp" />
     <ClInclude Include="BattleManager.hpp" />
+    <ClInclude Include="Beast.hpp" />
     <ClInclude Include="BlockType.hpp" />
-    <ClInclude Include="Casador.hpp" />
-    <ClInclude Include="DeathСlaw.hpp" />
     <ClInclude Include="Doomguy.hpp" />
     <ClInclude Include="Fighter.hpp" />
     <ClInclude Include="FighterBuilder.hpp" />
+    <ClInclude Include="Magician.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Ranger.hpp" />
     <ClInclude Include="Session.hpp" />
     <ClInclude Include="SideEffect.hpp" />
+    <ClInclude Include="SideEffectBleeding.hpp" />
     <ClInclude Include="SideEffectPoisoning.hpp" />
+    <ClInclude Include="SideEffectRegeneration.hpp" />
     <ClInclude Include="SkillContract.hpp" />
     <ClInclude Include="SkillMage.hpp" />
     <ClInclude Include="SkillMageJinx.hpp" />
+    <ClInclude Include="SkillMageRay.hpp" />
     <ClInclude Include="Warrior.hpp" />
     <ClInclude Include="SkillWarrior.hpp" />
   </ItemGroup>

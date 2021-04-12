@@ -1,3 +1,4 @@
+class Fighter;
 
 class SideEffect
 {
