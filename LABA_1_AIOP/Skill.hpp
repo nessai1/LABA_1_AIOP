@@ -24,7 +24,7 @@ public:
     }
 
     Skill(int cost = 0, std::string ownerNick = "UNNAMED") : ownerNick(ownerNick), cost(cost) {}
-
+    ~Skill() {}
     int getCost()
     {
         return this->cost;

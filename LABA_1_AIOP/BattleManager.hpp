@@ -10,8 +10,8 @@ public:
         {
             //system("cls");
             std::cout << "\n==================\n";
-            std::cout << "Ð¥Ð¾Ð´ #" << i << '\n';
-            std::cout << "Ð¥Ð¾Ð´ Ð¸Ð³Ñ€Ð¾ÐºÐ° " << firstPlayer->getNick() << '\n';
+            std::cout << "Õîä #" << i << '\n';
+            std::cout << "Õîä èãðîêà " << firstPlayer->getNick() << '\n';
             std::cout << firstPlayer->getNick() << " HP: " << firstPlayer->getHP() << " MANA: " << firstPlayer->getMana() << '\n';
             std::cout << secondPlayer->getNick() << " HP: " << secondPlayer->getHP() << " MANA: " << secondPlayer->getMana() << '\n';
             std::cout << "==================\n";
@@ -59,14 +59,15 @@ protected:
             if (wrongInput)
             {
                 wrongInput = false;
-                std::cout << "Ð¢Ð¸Ð¿ Ð±Ð»Ð¾ÐºÐ° Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ñ‡Ð¸ÑÐ»Ð¾Ð¼ Ð² Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚ÐºÐµ Ð¾Ñ‚ 1 Ð´Ð¾ 5Ñ‚Ð¸. ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚Ðµ Ð¿Ð¾Ð¿Ñ‹Ñ‚ÐºÑƒ\n";
+                std::cout << "Òèï áëîêà äîëæåí áûòü ÷èñëîì â ïðîìåæóòêå îò 1 äî 5òè. Ïîâòîðèòå ïîïûòêó\n";
             }
-            std::cout << inputPlayer->getNick() << ", Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð±Ð»Ð¾ÐºÐ¸Ñ€ÑƒÐµÐ¼Ð¾Ð¹ Ð°Ñ‚Ð°ÐºÐ¸ (Ð¾Ñ‚ 1 Ð´Ð¾ 5):\n";
-            std::cout << "Ð’Ð’ÐžÐ”:";
+            std::cout << inputPlayer->getNick() << ", ââåäèòå íîìåð áëîêèðóåìîé àòàêè (îò 1 äî 5):\n";
+            std::cout << "ÂÂÎÄ:";
             std::cin >> blockID;
 
             if (blockID > 5 || blockID < 1)
             {
+                wrongInput = true;
                 continue;
             }
 

@@ -1,7 +1,7 @@
 class Warrior : public Fighter
 {
 public:
-	Warrior() : Fighter(1000, 0, 300) {}
+	Warrior() : Fighter(1000, 0, 90) {}
 
 	void useUltimate(Fighter* defencer)
 	{

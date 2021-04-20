@@ -8,7 +8,7 @@ protected:
     int blockID;
 
 
-
+    int mana;
     int standartMagicArmor;
     int standartPhysicalArmor;
     
@@ -33,7 +33,7 @@ public:
         return 0;
     }
 
-    Fighter(int inputHP, int standartMagicArmor = 0, int standartPhysicalArmor = 0, std::string nickName = "FIGHTER") : nickName(nickName), standartMagicArmor(standartMagicArmor), standartPhysicalArmor(standartPhysicalArmor), hp(inputHP), magicBlock(false)
+    Fighter(int inputHP, int standartMagicArmor = 0, int standartPhysicalArmor = 0, std::string nickName = "FIGHTER") : nickName(nickName), standartMagicArmor(standartMagicArmor), standartPhysicalArmor(standartPhysicalArmor), hp(inputHP), magicBlock(false), mana(0)
     {}
  
 
@@ -88,8 +88,11 @@ public:
     bool attackPlayer(Fighter* defencer)
     {
         int inputID = 0;
+        int skillSize = this->skills.size();
+        //std::cout << "SKILLS YO: " << skillSize << "\n";
         
-        while (inputID > skills.size() && inputID <= 0)
+        
+        while (inputID > skillSize || inputID <= 0)
         {
             std::cout << this->getNick() << ", выберите свою атаку:\n";
             this->showSkills();
@@ -113,6 +116,7 @@ public:
         }
 
         std::cout << this->getNick() << " использует способность '" << this->skills[inputID - 1]->getName() << "'\n";
+        this->mana -= this->skills[inputID - 1]->getCost();
         if (defencer->getBlockID() != inputID)
         {
             defencer->setSkillAttack(this->skills[inputID - 1]);
@@ -120,7 +124,7 @@ public:
         }
         else
         {
-            std::cout << defencer->getNick() << "Блокирует атаку противника." << '\n';
+            std::cout << defencer->getNick() << " блокирует атаку противника." << '\n';
             return false;
         }
     }

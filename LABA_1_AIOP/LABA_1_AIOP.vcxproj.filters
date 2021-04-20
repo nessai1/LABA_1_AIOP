@@ -22,6 +22,9 @@
     <Filter Include="Файлы заголовков\skills\mageSkills">
       <UniqueIdentifier>{597b1208-8495-4f8c-8e41-1c787806bda9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\skills\warriorSkills">
+      <UniqueIdentifier>{c2392640-e94b-42e3-945e-9c26149a8af1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -64,6 +67,27 @@
     </ClInclude>
     <ClInclude Include="SkillMageJinx.hpp">
       <Filter>Файлы заголовков\skills\mageSkills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillFist.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillPiercing.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMageTornado.hpp">
+      <Filter>Файлы заголовков\skills\mageSkills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMageFall.hpp">
+      <Filter>Файлы заголовков\skills\mageSkills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillWarriorSword.hpp">
+      <Filter>Файлы заголовков\skills\warriorSkills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillWarriorPush.hpp">
+      <Filter>Файлы заголовков\skills\warriorSkills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillWarriorPiercing.hpp">
+      <Filter>Файлы заголовков\skills\warriorSkills</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

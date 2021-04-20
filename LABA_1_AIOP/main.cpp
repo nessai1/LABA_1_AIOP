@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <ctime>
 #include <vector>
@@ -9,12 +9,22 @@
 /// skills 
 #include "Skill.hpp"
 
+// common skills 
+#include "SkillFist.hpp"
+#include "SkillPiercing.hpp"
+
+// warrior skills
 #include "SkillWarrior.hpp"
+#include "SkillWarriorSword.hpp"
+#include "SkillWarriorPush.hpp"
+#include "SkillWarriorPiercing.hpp"
 
-
+// mage skills
 #include "SkillMage.hpp"
 #include "SkillMageJinx.hpp"
 #include "SkillMageRay.hpp"
+#include "SkillMageTornado.hpp"
+#include "SkillMageFall.hpp"
 
 #include "Fighter.hpp"
 
@@ -32,7 +42,6 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	//setlocale(LC_ALL, "rus");
 	Session* game = new Session();
 	game->startSession();
 	return 0;

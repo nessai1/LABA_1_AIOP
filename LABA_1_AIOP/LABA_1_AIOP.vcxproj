@@ -149,9 +149,16 @@
     <ClInclude Include="Magician.hpp" />
     <ClInclude Include="Session.hpp" />
     <ClInclude Include="Skill.hpp" />
+    <ClInclude Include="SkillFist.hpp" />
     <ClInclude Include="SkillMage.hpp" />
+    <ClInclude Include="SkillMageFall.hpp" />
     <ClInclude Include="SkillMageJinx.hpp" />
     <ClInclude Include="SkillMageRay.hpp" />
+    <ClInclude Include="SkillMageTornado.hpp" />
+    <ClInclude Include="SkillPiercing.hpp" />
+    <ClInclude Include="SkillWarriorPiercing.hpp" />
+    <ClInclude Include="SkillWarriorPush.hpp" />
+    <ClInclude Include="SkillWarriorSword.hpp" />
     <ClInclude Include="Warrior.hpp" />
     <ClInclude Include="SkillWarrior.hpp" />
   </ItemGroup>

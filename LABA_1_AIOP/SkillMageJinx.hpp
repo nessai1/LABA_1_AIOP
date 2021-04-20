@@ -14,7 +14,8 @@ public:
 
 	std::string getName()
 	{
-		return "Наслать проклятье на противника (MAGIC: " + this->skillDamage + ')';
+		std::string name = "Наслать проклятье на противника (MAGIC: 100)";
+		return name;
 	}
 
 	std::string skillMessage(std::string defencerNick)

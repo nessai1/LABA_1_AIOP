@@ -3,7 +3,7 @@ class SkillMage : public Skill
 
 public:
 
-	DamageType getDamageType()
+	virtual DamageType getDamageType()
 	{
 		return DamageType::MAGIC;
 	}

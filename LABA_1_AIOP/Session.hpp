@@ -6,7 +6,7 @@ public:
 
 	void startSession()
 	{
-		std::cout << "Ð”Ð° Ð½Ð°Ñ‡Ð½ÐµÑ‚ÑÑ Ð¶Ðµ Ð±Ð¸Ñ‚Ð²Ð°!\n";
+		std::cout << "Äà íà÷íåòñÿ æå áèòâà!\n";
 		Fighter* firstPlayer = selectCharacter(1);
 		Fighter* secondPlayer = selectCharacter(2);
 
@@ -26,12 +26,12 @@ public:
 			std::swap(firstPlayer, secondPlayer);
 		}
 
-		std::cout << " Ñ…Ð¾Ð´Ð¸Ñ‚ Ð¿ÐµÑ€Ð²Ñ‹Ð¼\n";
+		std::cout << " õîäèò ïåðâûì\n";
 
 
 		Fighter* winner = BattleManager::makeBattle(firstPlayer, secondPlayer);
 		system("cls");
-		std::cout << winner->getNick() << " Ð¿Ð¾Ð±ÐµÐ´Ð¸Ð» Ð² ÑÑ…Ð²Ð°Ñ‚ÐºÐµ!\n";
+		std::cout << winner->getNick() << " ïîáåäèë â ñõâàòêå!\n";
 	}
 
 protected:
@@ -46,13 +46,13 @@ protected:
 			if (wrongInput)
 			{
 				wrongInput = false;
-				std::cout << "ÐÐ¾Ð¼ÐµÑ€ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð¶Ð° Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚ 1 Ð´Ð¾ 3Ñ….\n";
+				std::cout << "Íîìåð ïåðñîíàæà äîëæåí áûòü îò 1 äî 3õ.\n";
 			}
-			std::cout << "Ð¥ÑÐ¹, " << playerNumber << "Ð¹, Ð²Ñ‹Ð±ÐµÑ€Ð¸ ÐºÐ»Ð°ÑÑ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð¶Ð°\n";
-			std::cout << "1. ÐœÐ°Ð³ (800 HP, 200 Ð¾Ñ‡ÐºÐ¾Ð² Ð¼Ð°Ð½Ñ‹ Ð½Ð° ÑÑ‚Ð°Ñ€Ñ‚Ðµ, Ð·Ð°Ñ‰Ð¸Ñ‚Ð° Ð¾Ñ‚ Ð¼Ð°Ð³. ÑƒÑ€Ð¾Ð½Ð° = 200 )\n";
-			std::cout << "2. Ð’Ð¾Ð¸Ð½ (1000 HP, 300 Ð¾Ñ‡ÐºÐ¾Ð² Ð±Ñ€Ð¾Ð½Ð¸)\n";
-			std::cout << "3. Ð—Ð²ÐµÑ€ÑŒ (1300 HP, Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¿Ñ€Ð¾Ñ†ÐµÐ½Ñ‚ ÑƒÐºÐ»Ð¾Ð½ÐµÐ½Ð¸Ñ = 30%)\n";
-			std::cout << "Ð’Ð’ÐžÐ”: ";
+			std::cout << "Õýé, " << playerNumber << "é, âûáåðè êëàññ ïåðñîíàæà\n";
+			std::cout << "1. Ìàã (800 HP, 200 î÷êîâ ìàíû íà ñòàðòå, çàùèòà îò ìàã. óðîíà = 70 )\n";
+			std::cout << "2. Âîèí (1000 HP, 90 î÷êîâ áðîíè)\n";
+			std::cout << "3. Çâåðü (1300 HP, íà÷àëüíûé ïðîöåíò óêëîíåíèÿ = 30%)\n";
+			std::cout << "ÂÂÎÄ: ";
 			std::cin >> personID;
 			switch (personID)
 			{
@@ -75,17 +75,17 @@ protected:
 		
 		std::string inputNick;
 
-		std::cout << "Ð¢ÐµÐ¿ÐµÑ€ÑŒ Ð²Ð²ÐµÐ´Ð¸ ÑÐ²Ð¾Ð¹ Ð½Ð¸Ðº: ";
+		std::cout << "Òåïåðü ââåäè ñâîé íèê: ";
 		std::cin >> inputNick;
 
 		personPlayer->setNick(inputNick);
 
-		std::cout << "ÐžÐºÐµÐ¹, " << personPlayer->getNick() << ", Ð° Ñ‚ÐµÐ¿ÐµÑ€ÑŒ Ð´Ð°Ð²Ð°Ð¹ Ð²Ñ‹Ð±ÐµÑ€ÐµÐ¼ Ñ‚ÐµÐ±Ðµ ÑÐ¿Ð¾ÑÐ½Ð¾Ð±Ð½Ð¾ÑÑ‚Ð¸.\n";
+		std::cout << "Îêåé, " << personPlayer->getNick() << ", à òåïåðü äàâàé âûáåðåì òåáå ñïîñíîáíîñòè.\n";
 		std::vector<Skill*> availableSkills;
 		
 		if (personID == 1)
 		{
-			availableSkills = { new SkillMageRay(), new SkillMageJinx() };
+			availableSkills = {new SkillFist(), new SkillPiercing(), new SkillMageFall(), new SkillMageTornado(), new SkillMageRay(), new SkillMageJinx() };
 		}
 		else
 		{
@@ -100,27 +100,27 @@ protected:
 
 	void selectSkills(Fighter* selecter, std::vector<Skill*>& availableSkills)
 	{
-		std::cout << "ÐÑƒÐ¶Ð½Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ 2 ÑÐ¿Ð¾ÑÐ¾Ð±Ð½Ð¾ÑÑ‚Ð¸\n";
+		std::cout << "Íóæíî âûáðàòü 5 ñïîñîáíîñòåé\n";
 		int selectID;
 		int selectCounter = 0;
-		while (selectCounter != 2)
+		while (selectCounter != 5)
 		{
-			std::cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐµÑ‰Ðµ " << 2-selectCounter << " ÑÐ¿Ð¾ÑÐ¾Ð±Ð½Ð¾ÑÑ‚ÐµÐ¹:\n";
+			std::cout << "Âûáåðèòå åùå " << 5-selectCounter << " ñïîñîáíîñòåé:\n";
 			for (int i = 0; i < availableSkills.size(); i++)
 			{
 				std::cout << i + 1 << ". " << availableSkills[i]->getName();
 				if (availableSkills[i]->getCost() > 0)
 				{
-					std::cout << availableSkills[i]->getCost() << " Ð¼Ð°Ð½Ñ‹ Ð·Ð° Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ";
+					std::cout << ' ' << availableSkills[i]->getCost() << " ìàíû çà èñïîëüçîâàíèå";
 				}
 				std::cout << '\n';
 			}
-			std::cout << "Ð’Ð’ÐžÐ”: ";
+			std::cout << "ÂÂÎÄ: ";
 			std::cin >> selectID;
 			
-			if (selectID > 2 || selectID < 1)
+			if (selectID > 5 || selectID < 1)
 			{
-				std::cout << "ÐÑƒÐ¶Ð½Ð¾ Ð²Ð²ÐµÑÑ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð¾ Ð¾Ñ‚ 1 Ð´Ð¾ 2!\n";
+				std::cout << "Íóæíî ââåñòè ÷èñëî îò 1 äî 5!\n";
 				continue;
 			}
 			else

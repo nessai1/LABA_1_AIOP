@@ -2,7 +2,7 @@ class SkillWarrior : public Skill
 {
 public:
 
-	DamageType getDamageType()
+	virtual DamageType getDamageType()
 	{
 		return DamageType::PHYSICAL;
 	}
