@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Файлы заголовков\sideEffects">
-      <UniqueIdentifier>{789c8054-5f40-4d25-86b9-aef71e89cc63}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\fighters">
       <UniqueIdentifier>{66f6bc03-2799-49ba-bf6f-3568b776a2cb}</UniqueIdentifier>
     </Filter>
@@ -30,31 +27,16 @@
     <ClCompile Include="main.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
+    <ClCompile Include="DamageType.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Doomguy.hpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClInclude>
     <ClInclude Include="Session.hpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.hpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClInclude>
-    <ClInclude Include="BlockType.hpp">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="BattleManager.hpp">
       <Filter>Файлы ресурсов</Filter>
-    </ClInclude>
-    <ClInclude Include="Ranger.hpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClInclude>
-    <ClInclude Include="FighterBuilder.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="SideEffect.hpp">
-      <Filter>Файлы заголовков\sideEffects</Filter>
     </ClInclude>
     <ClInclude Include="Warrior.hpp">
       <Filter>Файлы заголовков\fighters</Filter>
@@ -62,10 +44,7 @@
     <ClInclude Include="Fighter.hpp">
       <Filter>Файлы заголовков\fighters</Filter>
     </ClInclude>
-    <ClInclude Include="SideEffectPoisoning.hpp">
-      <Filter>Файлы заголовков\sideEffects</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillContract.hpp">
+    <ClInclude Include="Skill.hpp">
       <Filter>Файлы заголовков\skills</Filter>
     </ClInclude>
     <ClInclude Include="SkillMage.hpp">
@@ -79,12 +58,6 @@
     </ClInclude>
     <ClInclude Include="Beast.hpp">
       <Filter>Файлы заголовков\fighters</Filter>
-    </ClInclude>
-    <ClInclude Include="SideEffectBleeding.hpp">
-      <Filter>Файлы заголовков\sideEffects</Filter>
-    </ClInclude>
-    <ClInclude Include="SideEffectRegeneration.hpp">
-      <Filter>Файлы заголовков\sideEffects</Filter>
     </ClInclude>
     <ClInclude Include="SkillMageRay.hpp">
       <Filter>Файлы заголовков\skills\mageSkills</Filter>

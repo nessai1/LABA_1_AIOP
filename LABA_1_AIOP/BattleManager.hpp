@@ -12,8 +12,8 @@ public:
             std::cout << "\n==================\n";
             std::cout << "Ход #" << i << '\n';
             std::cout << "Ход игрока " << firstPlayer->getNick() << '\n';
-            std::cout << firstPlayer->getNick() << " HP: " << firstPlayer->getHP() << '\n';
-            std::cout << secondPlayer->getNick() << " HP: " << secondPlayer->getHP() << '\n';
+            std::cout << firstPlayer->getNick() << " HP: " << firstPlayer->getHP() << " MANA: " << firstPlayer->getMana() << '\n';
+            std::cout << secondPlayer->getNick() << " HP: " << secondPlayer->getHP() << " MANA: " << secondPlayer->getMana() << '\n';
             std::cout << "==================\n";
 
             makeTurn(firstPlayer, secondPlayer);

@@ -7,55 +7,39 @@ protected:
     int hp;
     int blockID;
 
-    int mana; // mana
 
 
     int standartMagicArmor;
     int standartPhysicalArmor;
     
-    // armor
-    int magicArmor;
-    int physicalArmor;
     float dodge; // процент уклонения от физ. урона (от 0.0 до 1.0)
 
     bool magicBlock;
-    std::vector<SkillContract*> skills;
-    std::vector<SideEffect*> sideEffects;
+    std::vector<Skill*> skills;
 
 public:
 
+
+
     virtual void useUltimate(Fighter* defencer) = 0;
+
+    virtual void updateFighter()
+    {
+        return;
+    }
 
     virtual int getMana()
     {
         return 0;
     }
 
-    Fighter(int inputHP, int standartMagicArmor = 0, int standartPhysicalArmor = 0, std::string nickName = "FIGHTER") : nickName(nickName), standartMagicArmor(standartMagicArmor), standartPhysicalArmor(standartPhysicalArmor), hp(inputHP), magicArmor(0), physicalArmor(0), magicBlock(false)
+    Fighter(int inputHP, int standartMagicArmor = 0, int standartPhysicalArmor = 0, std::string nickName = "FIGHTER") : nickName(nickName), standartMagicArmor(standartMagicArmor), standartPhysicalArmor(standartPhysicalArmor), hp(inputHP), magicBlock(false)
     {}
+ 
 
-    void clearStats()
+    void addSkill(Skill* inputSC)
     {
-        this->magicArmor = this->standartMagicArmor;
-        this->physicalArmor = this->standartPhysicalArmor;
-    }
-
-    void updatePlayer()
-    {
-        this->clearStats();
-        for (int i = 0; i < sideEffects.size(); i++)
-        {
-            sideEffects[i]->makeSideEffect(this);
-        }
-    }
-   
-    void addSideEffect(SideEffect* inputSideEffect)
-    {
-        this->sideEffects.push_back(inputSideEffect);
-    }
-
-    void addSkill(SkillContract* inputSC)
-    {
+        inputSC->setOwnerNick(this->getNick());
         this->skills.push_back(inputSC);
     }
 
@@ -77,7 +61,29 @@ public:
         }
     }
 
-    
+    bool setSkillAttack(Skill* enemySkill)
+    {
+        int resultDamage;
+
+        switch (enemySkill->getDamageType())
+        {
+        case DamageType::PURGE:
+            resultDamage = this->setPureDamage(enemySkill->getDamage());
+            break;
+        case DamageType::PHYSICAL:
+            resultDamage = this->setPhysicalDamage(enemySkill->getDamage());
+            break;
+        case DamageType::MAGIC:
+            resultDamage = this->setMagicDamage(enemySkill->getDamage());
+            break;
+        default:
+            throw new std::logic_error("Wrong DamageType input in getSkillAttack function");
+            break;
+        }
+
+        std::cout << enemySkill->skillMessage(this->getNick()) << " ["<< resultDamage << " HP damage]\n"; 
+        return true;
+    }
 
     bool attackPlayer(Fighter* defencer)
     {
@@ -109,7 +115,7 @@ public:
         std::cout << this->getNick() << " использует способность '" << this->skills[inputID - 1]->getName() << "'\n";
         if (defencer->getBlockID() != inputID)
         {
-            this->skills[inputID - 1]->manipulatePlayer(defencer);
+            defencer->setSkillAttack(this->skills[inputID - 1]);
             return true;
         }
         else
@@ -146,9 +152,10 @@ public:
      * @param inputDamage
      * @return
      */
-    void setPureDamage(int inputDamage)
+    int setPureDamage(int inputDamage)
     {
        this->hp -= inputDamage;
+       return inputDamage;
     }
 
 
@@ -169,6 +176,11 @@ public:
         {
             throw std::invalid_argument("input argument 'dodge' must be float value in [0;1] position");
         }
+    }
+
+    float getDodge()
+    {
+        return this->dodge;
     }
 
     /**

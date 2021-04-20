@@ -1,9 +1,14 @@
-class SkillMage : public SkillContract
+class SkillMage : public Skill
 {
 
 public:
 
-	SkillMage(int inputCost) : SkillContract(inputCost) {}
+	DamageType getDamageType()
+	{
+		return DamageType::MAGIC;
+	}
+
+	SkillMage(int inputCost, std::string ownerNick = "UNNAMED") : Skill(inputCost, ownerNick) {}
 	~SkillMage() {}
 
 

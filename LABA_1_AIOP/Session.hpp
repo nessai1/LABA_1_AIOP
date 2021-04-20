@@ -49,9 +49,9 @@ protected:
 				std::cout << "Номер персонажа должен быть от 1 до 3х.\n";
 			}
 			std::cout << "Хэй, " << playerNumber << "й, выбери класс персонажа\n";
-			std::cout << "1. Маг\n";
-			std::cout << "2. Воин\n";
-			std::cout << "3. Зверь\n";
+			std::cout << "1. Маг (800 HP, 200 очков маны на старте, защита от маг. урона = 200 )\n";
+			std::cout << "2. Воин (1000 HP, 300 очков брони)\n";
+			std::cout << "3. Зверь (1300 HP, начальный процент уклонения = 30%)\n";
 			std::cout << "ВВОД: ";
 			std::cin >> personID;
 			switch (personID)
@@ -81,19 +81,24 @@ protected:
 		personPlayer->setNick(inputNick);
 
 		std::cout << "Окей, " << personPlayer->getNick() << ", а теперь давай выберем тебе споснобности.\n";
+		std::vector<Skill*> availableSkills;
+		
 		if (personID == 1)
 		{
-			std::vector<SkillContract*> availableSkills = { new SkillMageRay(), new SkillMageJinx() };
+			availableSkills = { new SkillMageRay(), new SkillMageJinx() };
 		}
 		else
 		{
-			std::vector<SkillContract*> availableSkills = { new SkillMageRay(), new SkillMageJinx() };
+			availableSkills = { new SkillMageRay(), new SkillMageJinx() };
 		}
 
+		
+
+		this->selectSkills(personPlayer, availableSkills);
 		return personPlayer;
 	}
 
-	void selectSkills(Fighter* selecter, std::vector<SkillContract*>& availableSkills)
+	void selectSkills(Fighter* selecter, std::vector<Skill*>& availableSkills)
 	{
 		std::cout << "Нужно выбрать 2 способности\n";
 		int selectID;

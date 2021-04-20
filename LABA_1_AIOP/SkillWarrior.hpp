@@ -1,7 +1,12 @@
-class SkillWarrior : public SkillContract
+class SkillWarrior : public Skill
 {
 public:
 
-	SkillWarrior() : SkillContract(0) {}
-	~SkillWarrior() {}
+	DamageType getDamageType()
+	{
+		return DamageType::PHYSICAL;
+	}
+
+	SkillWarrior(std::string ownerNick = "UNNAMED") : Skill(0, ownerNick) {}
+
 };

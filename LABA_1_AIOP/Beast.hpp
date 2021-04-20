@@ -1,31 +1,21 @@
 class Beast : public Fighter
 {
-protected:
-	int ultimateDamage;
-	SideEffectBleeding* ultimateBleeding;
-
-	void addBleeding(Fighter* inputFighter)
-	{
-		if (ultimateBleeding->getTurn() == 0)
-		{
-			this->ultimateBleeding->setTurn(2);
-			inputFighter->addSideEffect(this->ultimateBleeding);
-		}
-		else
-		{
-			ultimateBleeding->setTurn(2);
-		}
-	}
 public:
-	Beast() : ultimateDamage(300), Fighter(1300, 0, 0) 
+	Beast() : Fighter(1300, 0, 0) 
 	{
-		this->ultimateBleeding = new SideEffectBleeding();
+		this->setDodge(0.3);
 	}
 
 	void useUltimate(Fighter* defencer)
 	{
-		int finalDamage = defencer->setPhysicalDamage(300);
-		std::cout << this->getNick() << " нанес кровавый удар. " << defencer->getNick() << "Получил " << finalDamage << " очков физического урона и кровотечение на 2 следующих хода." << "\n";
-		addBleeding(defencer);
+		if (this->getDodge() < 0.9)
+		{
+			std::cout << "Обрел новых сил, получив 5% к уклонению от физических атак\n";
+			this->setDodge(this->getDodge() + 0.05);
+		}
+		
+		int finalDamage = static_cast<int>(defencer->getHP() / 2);
+		std::cout << this->getNick() << " нанес кровавый удар. " << defencer->getNick() << "Получил чистый урон, равный половине здоровья нападавшего (HP:" << finalDamage << ")\n";
+		defencer->setPureDamage(finalDamage);
 	}
 };

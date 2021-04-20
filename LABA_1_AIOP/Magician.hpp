@@ -1,7 +1,17 @@
 class Magician : public Fighter
 {
+protected:
+	int mana;
+
 public:
-	Magician() : Fighter(800, 100, 50) {}
+
+	void updateFighter()
+	{
+		this->mana += 30;
+		std::cout << this->getNick() << ": MANA = " << this->getMana() << '\n';
+	}
+
+	Magician() : Fighter(800, 200, 0), mana(200) {}
 
 	void useUltimate(Fighter* defencer)
 	{

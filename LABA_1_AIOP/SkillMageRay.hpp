@@ -5,16 +5,21 @@ protected:
 
 public:
 
-	SkillMageRay(int skillDamage = 40, int skillCost = 30) : SkillMage(skillCost), skillDamage(skillDamage) {}
+	int getDamage()
+	{
+		return this->skillDamage;
+	}
+
+	SkillMageRay(int skillDamage = 160, int skillCost = 100, std::string ownerNick = "UNNAMED") : SkillMage(skillCost, ownerNick), skillDamage(skillDamage) {}
 
 	std::string getName()
 	{
-		return "Пронзить противника лазерным лучом";
+		return "Нанести лучевой магический удар (MAGIC: " + this->skillDamage + ')';
 	}
 
-	void manipulatePlayer(Fighter* manipulatedPlayer)
+	std::string skillMessage(std::string defencerNick)
 	{
-		int finalDamage = manipulatedPlayer->setMagicDamage(this->skillDamage);
-		std::cout << manipulatedPlayer->getNick() << " получил удар лучем и получил " << finalDamage << " очков урона\n";
+		return (defencerNick + " поймал луч и получил хорошенькую порцию магического урона");
 	}
+
 };
